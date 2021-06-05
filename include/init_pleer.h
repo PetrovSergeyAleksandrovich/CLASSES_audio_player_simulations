@@ -4,14 +4,16 @@
 
 Pleer_t* pleer = new Pleer_t;
 
-
-void init_playlist()
+void init_pleer()
 {
-    Track_t* track = new Track_t;
     do {
-        std::string answer, user_input;
+        Track_t* track = new Track_t;
+        std::string answer, user_input_str;
+        int user_input_int;
+
         std::cout << "you want add track? y/n\n:";
         std::cin >> answer;
+
         while(answer != "y" && answer != "n")
         {
             std::cout << "you want add track? y/n\n:";
@@ -20,22 +22,23 @@ void init_playlist()
         if(answer == "y")
         {
             std::cout << "type name: ";
-            std::cin >> user_input;
-            track->name = user_input;
+            std::cin >> user_input_str;
+            track->name = user_input_str;
             std::cout << "type length seconds: ";
-            std::cin >> user_input;
-            track->length = user_input;
+            std::cin >> user_input_int;
+            track->length = user_input_int;
             std::time_t t = std::time(nullptr);
             track->creation_time = t;
-            //problem with push_back;
-            //pleer->playlist.push_back(track);
+            pleer->playlist.push_back(*track);
         }
+
         delete track;
         if(answer == "n") break;
+
     } while(true);
 }
 
-void clear_heap()
+void delete_pleer_heap()
 {
     delete pleer;
 }
