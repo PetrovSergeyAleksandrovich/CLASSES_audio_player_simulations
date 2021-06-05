@@ -57,13 +57,6 @@ public:
         isStop = false;
     }
 
-    void setPauseOff()
-    {
-        isPlaying = true;
-        isPause = false;
-        isStop = false;
-    }
-
     void play()
     {
         std::string user_input = "none";
